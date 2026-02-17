@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stranger Things - The Upside Down</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Special+Elite&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Particle canvas background -->
+  <canvas id="particles"></canvas>
+
+  <!-- Flickering overlay -->
+  <div class="flicker-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-text">ST</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active">Inicio</a></li>
+        <li><a href="#about" class="nav-link">El Mundo</a></li>
+        <li><a href="#characters" class="nav-link">Personajes</a></li>
+        <li><a href="#seasons" class="nav-link">Temporadas</a></li>
+        <li><a href="#gallery" class="nav-link">Galería</a></li>
+        <li><a href="#contact" class="nav-link">Contacto</a></li>
+      </ul>
+      <a href="#season6" class="nav-help-btn" aria-label="Temporada 6">?</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-lights">
+        <span class="light" style="--delay: 0s; --color: #ff1744;"></span>
+        <span class="light" style="--delay: 0.3s; --color: #ff6b35;"></span>
+        <span class="light" style="--delay: 0.6s; --color: #ffd600;"></span>
+        <span class="light" style="--delay: 0.9s; --color: #00e676;"></span>
+        <span class="light" style="--delay: 1.2s; --color: #2979ff;"></span>
+        <span class="light" style="--delay: 1.5s; --color: #d500f9;"></span>
+        <span class="light" style="--delay: 1.8s; --color: #ff1744;"></span>
+        <span class="light" style="--delay: 2.1s; --color: #ff6b35;"></span>
+      </div>
+      <h1 class="hero-title glitch" data-text="STRANGER THINGS">STRANGER THINGS</h1>
+      <p class="hero-subtitle typewriter">El Mundo del Revés te espera...</p>
+      <a href="#about" class="btn btn-primary">
+        <span>Explorar</span>
+        <div class="btn-glow"></div>
+      </a>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-line"></span>
+        El Mundo del Revés
+        <span class="title-line"></span>
+      </h2>
+      <div class="about-grid">
+        <div class="about-card glass-card" data-aos="fade-right">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10"/>
+              <path d="M12 2c3 3.5 4.5 7.5 4.5 10s-1.5 6.5-4.5 10"/>
+              <path d="M2 12h20"/>
+            </svg>
+          </div>
+          <h3>Hawkins, Indiana</h3>
+          <p>Una pequeña ciudad que esconde secretos más oscuros de lo que cualquiera podría imaginar. El Laboratorio Nacional de Hawkins abrió una puerta que jamás debió abrirse.</p>
+        </div>
+        <div class="about-card glass-card" data-aos="fade-up">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <h3>Poderes Psíquicos</h3>
+          <p>Once, una niña con poderes telequinéticos extraordinarios, es la clave para entender la conexión entre nuestro mundo y el Mundo del Revés.</p>
+        </div>
+        <div class="about-card glass-card" data-aos="fade-left">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3>El Upside Down</h3>
+          <p>Una dimensión alternativa oscura y fría, habitada por criaturas aterradoras. Un reflejo sombrío de nuestro mundo donde la muerte acecha en cada rincón.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Characters Section -->
+  <section class="section characters" id="characters">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-line"></span>
+        Personajes
+        <span class="title-line"></span>
+      </h2>
+      <div class="characters-grid">
+        <div class="character-card" data-aos="zoom-in">
+          <div class="character-image">
+            <div class="character-placeholder">
+              <span>011</span>
+            </div>
+            <div class="character-overlay">
+              <div class="character-info">
+                <h3>Eleven</h3>
+                <p>Número Once</p>
+              </div>
+            </div>
+          </div>
+          <div class="character-details">
+            <h4>Jane "Eleven" Hopper</h4>
+            <p>Una joven con habilidades psicoquinéticas y telepáticas, escapada del Laboratorio de Hawkins.</p>
+            <div class="character-power">
+              <span class="power-label">Poder</span>
+              <div class="power-bar"><div class="power-fill" style="--power: 95%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="character-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="character-image">
+            <div class="character-placeholder">
+              <span>M</span>
+            </div>
+            <div class="character-overlay">
+              <div class="character-info">
+                <h3>Mike</h3>
+                <p>El Líder</p>
+              </div>
+            </div>
+          </div>
+          <div class="character-details">
+            <h4>Mike Wheeler</h4>
+            <p>El corazón del grupo. Un chico valiente que nunca se rinde cuando sus amigos están en peligro.</p>
+            <div class="character-power">
+              <span class="power-label">Coraje</span>
+              <div class="power-bar"><div class="power-fill" style="--power: 85%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="character-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="character-image">
+            <div class="character-placeholder">
+              <span>D</span>
+            </div>
+            <div class="character-overlay">
+              <div class="character-info">
+                <h3>Dustin</h3>
+                <p>El Cerebro</p>
+              </div>
+            </div>
+          </div>
+          <div class="character-details">
+            <h4>Dustin Henderson</h4>
+            <p>El cerebro del grupo con un corazón de oro. Su ingenio y humor mantienen la esperanza viva.</p>
+            <div class="character-power">
+              <span class="power-label">Intelecto</span>
+              <div class="power-bar"><div class="power-fill" style="--power: 90%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="character-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="character-image">
+            <div class="character-placeholder">
+              <span>JH</span>
+            </div>
+            <div class="character-overlay">
+              <div class="character-info">
+                <h3>Hopper</h3>
+                <p>El Sheriff</p>
+              </div>
+            </div>
+          </div>
+          <div class="character-details">
+            <h4>Jim Hopper</h4>
+            <p>El jefe de policía de Hawkins. Un hombre rudo con un pasado doloroso y un corazón protector.</p>
+            <div class="character-power">
+              <span class="power-label">Fuerza</span>
+              <div class="power-bar"><div class="power-fill" style="--power: 88%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seasons Section -->
+  <section class="section seasons" id="seasons">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-line"></span>
+        Temporadas
+        <span class="title-line"></span>
+      </h2>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-marker">
+            <span>1</span>
+          </div>
+          <div class="timeline-content glass-card">
+            <div class="season-badge">2016</div>
+            <h3>La Desaparición de Will Byers</h3>
+            <p>En Hawkins, Indiana, un niño desaparece misteriosamente. Sus amigos descubren una niña con poderes sobrenaturales y una dimensión paralela aterradora.</p>
+            <div class="season-episodes">8 episodios</div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-marker">
+            <span>2</span>
+          </div>
+          <div class="timeline-content glass-card">
+            <div class="season-badge">2017</div>
+            <h3>El Mind Flayer</h3>
+            <p>Will sigue conectado al Mundo del Revés. Una nueva amenaza, más grande y oscura, se cierne sobre Hawkins mientras Eleven busca su origen.</p>
+            <div class="season-episodes">9 episodios</div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-marker">
+            <span>3</span>
+          </div>
+          <div class="timeline-content glass-card">
+            <div class="season-badge">2019</div>
+            <h3>La Batalla de Starcourt</h3>
+            <p>El verano de 1985 trae nuevos horrores. El Mind Flayer regresa con más fuerza mientras un centro comercial esconde secretos soviéticos.</p>
+            <div class="season-episodes">8 episodios</div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-marker">
+            <span>4</span>
+          </div>
+          <div class="timeline-content glass-card">
+            <div class="season-badge">2022</div>
+            <h3>Vecna</h3>
+            <p>Seis meses después de la batalla de Starcourt, el grupo está separado. Una nueva amenaza sobrenatural aterroriza Hawkins: Vecna, el villano más poderoso.</p>
+            <div class="season-episodes">9 episodios</div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-marker">
+            <span>5</span>
+          </div>
+          <div class="timeline-content glass-card">
+            <div class="season-badge">2025</div>
+            <h3>El Final</h3>
+            <p>La batalla definitiva por Hawkins y el destino del mundo. Todos los hilos se unen en una conclusión épica que cerrará la historia para siempre.</p>
+            <div class="season-episodes">8 episodios</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-line"></span>
+        Galería
+        <span class="title-line"></span>
+      </h2>
+      <div class="gallery-grid">
+        <div class="gallery-item large" data-aos="fade-up">
+          <div class="gallery-placeholder" style="--hue: 0;">
+            <div class="gallery-text">The Upside Down</div>
+            <div class="gallery-static"></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="gallery-placeholder" style="--hue: 30;">
+            <div class="gallery-text">Hawkins Lab</div>
+            <div class="gallery-static"></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="gallery-placeholder" style="--hue: 350;">
+            <div class="gallery-text">Demogorgon</div>
+            <div class="gallery-static"></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="gallery-placeholder" style="--hue: 10;">
+            <div class="gallery-text">Mind Flayer</div>
+            <div class="gallery-static"></div>
+          </div>
+        </div>
+        <div class="gallery-item tall" data-aos="fade-up" data-aos-delay="150">
+          <div class="gallery-placeholder" style="--hue: 340;">
+            <div class="gallery-text">Vecna</div>
+            <div class="gallery-static"></div>
+          </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
+          <div class="gallery-placeholder" style="--hue: 20;">
+            <div class="gallery-text">Starcourt Mall</div>
+            <div class="gallery-static"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Newsletter Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-line"></span>
+        Únete al Grupo
+        <span class="title-line"></span>
+      </h2>
+      <div class="contact-wrapper">
+        <div class="contact-info" data-aos="fade-right">
+          <h3>¿Estás listo para entrar?</h3>
+          <p>Únete a la resistencia contra el Mundo del Revés. Recibe noticias, teorías y contenido exclusivo directamente en tu walkie-talkie... o tu email.</p>
+          <div class="contact-features">
+            <div class="feature">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Walkie-Talkie</h4>
+                <p>Canal secreto disponible 24/7</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Arcade Palace</h4>
+                <p>Hawkins, Indiana - Sótano de los Wheeler</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form glass-card" data-aos="fade-left" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" required placeholder=" ">
+            <label for="name">Tu Nombre</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" required placeholder=" ">
+            <label for="email">Tu Email</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="4" required placeholder=" "></textarea>
+            <label for="message">Tu Mensaje</label>
+            <div class="form-line"></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span>Enviar Señal</span>
+            <div class="btn-glow"></div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3 class="footer-logo">STRANGER THINGS</h3>
+          <p>Friends don't lie.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#about">El Mundo</a></li>
+            <li><a href="#characters">Personajes</a></li>
+            <li><a href="#seasons">Temporadas</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Recursos</h4>
+          <ul>
+            <li><a href="#">Wiki</a></li>
+            <li><a href="#">Teorías</a></li>
+            <li><a href="#">Soundtrack</a></li>
+            <li><a href="#">Comunidad</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Síguenos</h4>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zM9 16V8l8 4-8 4z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stranger Things Fan Platform. No es un sitio oficial de Netflix.</p>
+        <div class="footer-alphabet">
+          <span class="alpha-light" style="--i:0">A</span>
+          <span class="alpha-light" style="--i:1">B</span>
+          <span class="alpha-light" style="--i:2">C</span>
+          <span class="alpha-light" style="--i:3">D</span>
+          <span class="alpha-light" style="--i:4">E</span>
+          <span class="alpha-light" style="--i:5">F</span>
+          <span class="alpha-light" style="--i:6">G</span>
+          <span class="alpha-light" style="--i:7">H</span>
+          <span class="alpha-light" style="--i:8">I</span>
+          <span class="alpha-light" style="--i:9">J</span>
+          <span class="alpha-light" style="--i:10">K</span>
+          <span class="alpha-light" style="--i:11">L</span>
+          <span class="alpha-light" style="--i:12">M</span>
+          <span class="alpha-light" style="--i:13">N</span>
+          <span class="alpha-light" style="--i:14">O</span>
+          <span class="alpha-light" style="--i:15">P</span>
+          <span class="alpha-light" style="--i:16">Q</span>
+          <span class="alpha-light" style="--i:17">R</span>
+          <span class="alpha-light" style="--i:18">S</span>
+          <span class="alpha-light" style="--i:19">T</span>
+          <span class="alpha-light" style="--i:20">U</span>
+          <span class="alpha-light" style="--i:21">V</span>
+          <span class="alpha-light" style="--i:22">W</span>
+          <span class="alpha-light" style="--i:23">X</span>
+          <span class="alpha-light" style="--i:24">Y</span>
+          <span class="alpha-light" style="--i:25">Z</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
