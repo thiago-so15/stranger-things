@@ -1,0 +1,539 @@
+/* ==========================================
+   SEASON 6 - PRODUCTION DOCUMENT STYLES
+   ========================================== */
+
+/* --- Back Button --- */
+.btn-back {
+  color: var(--gray-text);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  text-transform: uppercase;
+}
+
+.btn-back:hover {
+  color: var(--red-primary);
+}
+
+/* --- Cover --- */
+.s6-cover {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.s6-cover-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at center, rgba(139, 0, 0, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(229, 9, 20, 0.08) 0%, transparent 40%),
+    var(--black-deep);
+}
+
+.s6-cover-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+.s6-cover-content {
+  text-align: center;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.s6-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--red-primary);
+  margin-bottom: 3rem;
+  opacity: 0.7;
+}
+
+.s6-main-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  color: var(--red-primary);
+  text-shadow: var(--glow-lg);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.s6-divider {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red-primary), transparent);
+  margin: 2rem auto;
+}
+
+.s6-subtitle {
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  color: var(--white-dim);
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+}
+
+.s6-codename {
+  font-family: var(--font-accent);
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--white);
+  letter-spacing: 8px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.s6-meta {
+  font-size: 0.8rem;
+  color: var(--gray-text);
+  line-height: 1.8;
+  letter-spacing: 1px;
+}
+
+/* --- Document Layout --- */
+.s6-document {
+  position: relative;
+  z-index: 2;
+  background: var(--black-deep);
+}
+
+.doc-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* --- Document Sections --- */
+.doc-section {
+  padding: 5rem 0;
+  border-bottom: 1px solid rgba(229, 9, 20, 0.1);
+  position: relative;
+}
+
+.doc-section:last-of-type {
+  border-bottom: none;
+}
+
+.section-number {
+  font-family: var(--font-title);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--red-primary);
+  opacity: 0.08;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  line-height: 1;
+  letter-spacing: 5px;
+}
+
+.doc-title {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.doc-separator {
+  width: 60px;
+  height: 3px;
+  background: var(--red-primary);
+  margin-bottom: 3rem;
+  box-shadow: var(--glow-sm);
+}
+
+.doc-subtitle {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: var(--red-light);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.doc-block {
+  margin-bottom: 3rem;
+}
+
+.doc-block p {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.doc-block strong {
+  color: var(--white);
+}
+
+.doc-block em {
+  color: var(--red-light);
+  font-style: italic;
+}
+
+.doc-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.doc-list li {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.doc-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red-primary);
+  box-shadow: 0 0 8px var(--red-primary);
+}
+
+.doc-list li strong {
+  color: var(--red-light);
+}
+
+/* --- Character Profiles --- */
+.character-profile {
+  margin-bottom: 4rem;
+  background: rgba(17, 17, 17, 0.6);
+  border: 1px solid rgba(229, 9, 20, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.character-profile:hover {
+  border-color: rgba(229, 9, 20, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 2.5rem;
+  background: rgba(229, 9, 20, 0.05);
+  border-bottom: 1px solid rgba(229, 9, 20, 0.1);
+}
+
+.profile-id {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--red-primary);
+  text-shadow: var(--glow-sm);
+  min-width: 60px;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 8px;
+}
+
+.profile-header h3 {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  color: var(--white);
+}
+
+.profile-age {
+  font-size: 0.8rem;
+  color: var(--gray-text);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.profile-body {
+  padding: 2rem 2.5rem;
+}
+
+.profile-field {
+  margin-bottom: 2rem;
+}
+
+.profile-field:last-child {
+  margin-bottom: 0;
+}
+
+.profile-field h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--red-primary);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(229, 9, 20, 0.1);
+}
+
+.profile-field p {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.profile-field em {
+  color: var(--red-light);
+}
+
+/* --- Villain Card --- */
+.villain-card {
+  text-align: center;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  background: rgba(229, 9, 20, 0.03);
+  border: 1px solid rgba(229, 9, 20, 0.15);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.villain-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(229, 9, 20, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.villain-name {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  color: var(--white);
+  text-shadow: var(--glow-md);
+  margin-bottom: 0.8rem;
+}
+
+.villain-aka {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  color: var(--gray-text);
+  letter-spacing: 2px;
+}
+
+/* --- Episodes --- */
+.episode-card {
+  margin-bottom: 4rem;
+  background: rgba(17, 17, 17, 0.5);
+  border: 1px solid rgba(229, 9, 20, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.episode-card:hover {
+  border-color: rgba(229, 9, 20, 0.2);
+}
+
+.episode-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.8rem 2.5rem;
+  background: rgba(229, 9, 20, 0.04);
+  border-bottom: 1px solid rgba(229, 9, 20, 0.08);
+}
+
+.episode-number {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--red-primary);
+  text-shadow: var(--glow-sm);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 6px;
+  letter-spacing: 2px;
+}
+
+.episode-title {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: var(--white);
+  flex: 1;
+}
+
+.episode-duration {
+  font-size: 0.8rem;
+  color: var(--gray-text);
+  letter-spacing: 1px;
+}
+
+.episode-body {
+  padding: 2.5rem;
+}
+
+.episode-body p {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.episode-body strong {
+  color: var(--white);
+}
+
+.episode-body em {
+  color: var(--red-light);
+  font-style: italic;
+}
+
+.cliffhanger {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(229, 9, 20, 0.05);
+  border-left: 3px solid var(--red-primary);
+  border-radius: 0 8px 8px 0;
+  box-shadow: -3px 0 15px rgba(229, 9, 20, 0.1);
+}
+
+/* --- Post Credits --- */
+.postcredits {
+  background: rgba(17, 17, 17, 0.6);
+  border: 1px solid rgba(229, 9, 20, 0.15);
+  border-radius: 16px;
+  padding: 3rem;
+}
+
+.postcredits p {
+  font-size: 0.95rem;
+}
+
+.postcredits em {
+  color: var(--gray-text);
+}
+
+.postcredit-words {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--red-primary) !important;
+  text-shadow: var(--glow-md);
+  text-align: center;
+  padding: 2rem 0;
+  letter-spacing: 5px;
+}
+
+/* --- Document End --- */
+.doc-end {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  color: var(--gray-text);
+}
+
+.doc-end p {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.doc-end-sub {
+  font-size: 0.7rem !important;
+  letter-spacing: 2px !important;
+  opacity: 0.6;
+}
+
+.doc-end-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red-primary), transparent);
+  margin: 1.5rem auto;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .doc-container {
+    padding: 0 1.2rem 4rem;
+  }
+
+  .s6-cover-content {
+    padding: 2rem 1rem;
+  }
+
+  .s6-main-title {
+    letter-spacing: 4px;
+  }
+
+  .s6-subtitle {
+    letter-spacing: 6px;
+  }
+
+  .s6-codename {
+    letter-spacing: 4px;
+  }
+
+  .section-number {
+    font-size: 3rem;
+    top: 4rem;
+  }
+
+  .profile-header {
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-body {
+    padding: 1.5rem;
+  }
+
+  .episode-header {
+    padding: 1.2rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .episode-body {
+    padding: 1.5rem;
+  }
+
+  .postcredits {
+    padding: 2rem 1.5rem;
+  }
+
+  .villain-card {
+    padding: 2rem 1.5rem;
+  }
+}

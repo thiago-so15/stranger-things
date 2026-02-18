@@ -35,7 +35,7 @@
         <li><a href="#gallery" class="nav-link">Galería</a></li>
         <li><a href="#contact" class="nav-link">Contacto</a></li>
       </ul>
-      <a href="#season6" class="nav-help-btn" aria-label="Temporada 6">?</a>
+      <a href="season6.html" class="nav-help-btn" aria-label="Temporada 6: Eclipse">?</a>
     </div>
   </nav>
 
@@ -76,7 +76,7 @@
         <span class="title-line"></span>
       </h2>
       <div class="about-grid">
-        <div class="about-card glass-card" data-aos="fade-right">
+        <div class="about-card glass-card about-card-clickable" data-aos="fade-right" onclick="document.getElementById('hawkinsModal').style.display='flex';document.getElementById('hawkinsModal').style.opacity='1';document.getElementById('hawkinsModal').style.visibility='visible';document.body.style.overflow='hidden'" style="cursor:pointer">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="12" cy="12" r="10"/>
@@ -87,8 +87,9 @@
           </div>
           <h3>Hawkins, Indiana</h3>
           <p>Una pequeña ciudad que esconde secretos más oscuros de lo que cualquiera podría imaginar. El Laboratorio Nacional de Hawkins abrió una puerta que jamás debió abrirse.</p>
+          <span class="card-read-more">Leer artículo &rarr;</span>
         </div>
-        <div class="about-card glass-card" data-aos="fade-up">
+        <div class="about-card glass-card about-card-clickable" data-aos="fade-up" onclick="document.getElementById('poderesModal').style.display='flex';document.getElementById('poderesModal').style.opacity='1';document.getElementById('poderesModal').style.visibility='visible';document.body.style.overflow='hidden'" style="cursor:pointer">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
@@ -96,8 +97,9 @@
           </div>
           <h3>Poderes Psíquicos</h3>
           <p>Once, una niña con poderes telequinéticos extraordinarios, es la clave para entender la conexión entre nuestro mundo y el Mundo del Revés.</p>
+          <span class="card-read-more">Leer artículo &rarr;</span>
         </div>
-        <div class="about-card glass-card" data-aos="fade-left">
+        <div class="about-card glass-card about-card-clickable" data-aos="fade-left" onclick="document.getElementById('upsideModal').style.display='flex';document.getElementById('upsideModal').style.opacity='1';document.getElementById('upsideModal').style.visibility='visible';document.body.style.overflow='hidden'" style="cursor:pointer">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
@@ -106,6 +108,7 @@
           </div>
           <h3>El Upside Down</h3>
           <p>Una dimensión alternativa oscura y fría, habitada por criaturas aterradoras. Un reflejo sombrío de nuestro mundo donde la muerte acecha en cada rincón.</p>
+          <span class="card-read-more">Leer artículo &rarr;</span>
         </div>
       </div>
     </div>
@@ -332,6 +335,62 @@
     </div>
   </section>
 
+  <!-- Season 6 Section -->
+  <section class="section season6" id="season6">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-line"></span>
+        Temporada 6
+        <span class="title-line"></span>
+      </h2>
+      <div class="season6-content">
+        <div class="season6-hero-card glass-card" data-aos="fade-up">
+          <div class="season6-badge">PRÓXIMAMENTE</div>
+          <div class="season6-number">6</div>
+          <h3>El Capítulo Final... ¿o no?</h3>
+          <p>Los rumores recorren Hawkins como las esporas del Upside Down. Después del devastador final de la Temporada 5, nadie esperaba que la historia continuara. Pero las luces han vuelto a parpadear...</p>
+          <div class="season6-details">
+            <div class="season6-detail">
+              <span class="detail-label">Estado</span>
+              <span class="detail-value">Sin confirmar</span>
+            </div>
+            <div class="season6-detail">
+              <span class="detail-label">Rumores</span>
+              <span class="detail-value">Spin-off / Secuela</span>
+            </div>
+            <div class="season6-detail">
+              <span class="detail-label">Posible estreno</span>
+              <span class="detail-value">2027?</span>
+            </div>
+          </div>
+        </div>
+        <div class="season6-theories" data-aos="fade-up" data-aos-delay="200">
+          <div class="theory-card glass-card">
+            <div class="theory-icon">💀</div>
+            <h4>El regreso de Vecna</h4>
+            <p>¿Realmente fue derrotado? Algunos fans creen que su conexión con el Upside Down es más profunda de lo que pensamos.</p>
+          </div>
+          <div class="theory-card glass-card">
+            <div class="theory-icon">🔮</div>
+            <h4>Los poderes de Eleven</h4>
+            <p>¿Qué pasó realmente con sus poderes? La respuesta podría abrir una nueva saga en el universo de Stranger Things.</p>
+          </div>
+          <div class="theory-card glass-card">
+            <div class="theory-icon">🌀</div>
+            <h4>Nuevas dimensiones</h4>
+            <p>El Upside Down podría ser solo una de muchas dimensiones. ¿Qué más se esconde al otro lado?</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2.5rem;" data-aos="fade-up" data-aos-delay="300">
+          <a href="episodes.html" class="btn btn-primary">
+            <span>Ver Episodios</span>
+            <div class="btn-glow"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact / Newsletter Section -->
   <section class="section contact" id="contact">
     <div class="container">
@@ -469,6 +528,152 @@
       </div>
     </div>
   </footer>
+
+  <!-- Hawkins Article Modal -->
+  <div class="hawkins-modal-overlay" id="hawkinsModal" onclick="if(event.target===this){this.style.display='none';this.style.opacity='0';this.style.visibility='hidden';document.body.style.overflow=''}">
+    <div class="hawkins-modal">
+      <button class="hawkins-modal-close" onclick="var m=document.getElementById('hawkinsModal');m.style.display='none';m.style.opacity='0';m.style.visibility='hidden';document.body.style.overflow=''">&times;</button>
+
+      <div class="hawkins-modal-hero">
+        <div class="hawkins-modal-hero-bg"></div>
+        <div class="hawkins-modal-hero-content">
+          <span class="hawkins-tag">ARTÍCULO CLASIFICADO</span>
+          <h1>Hawkins, Indiana</h1>
+          <p class="hawkins-subtitle">La ciudad que cambió el mundo — y que el mundo nunca supo.</p>
+        </div>
+      </div>
+
+      <article class="hawkins-article">
+        <section class="hawkins-section">
+          <h2>La Ciudad</h2>
+          <p>Hawkins es una pequeña ciudad ficticia ubicada en el condado de Roane, Indiana, Estados Unidos. Con una población de aproximadamente <strong>30,000 habitantes</strong>, es el tipo de lugar donde todos se conocen, las puertas se dejan sin llave y los niños andan en bicicleta hasta el anochecer.</p>
+          <p>Pero debajo de esa fachada tranquila, Hawkins esconde una de las historias más oscuras y clasificadas de la Guerra Fría.</p>
+        </section>
+
+        <section class="hawkins-section">
+          <h2>Laboratorio Nacional de Hawkins</h2>
+          <div class="hawkins-highlight">
+            <span class="hawkins-highlight-tag">TOP SECRET — MKUltra</span>
+            <p>El Laboratorio Nacional de Hawkins, operado por el Departamento de Energía de los Estados Unidos, fue la sede de experimentos secretos del programa <strong>MKUltra</strong>, dirigidos por el Dr. Martin Brenner.</p>
+          </div>
+          <p>Bajo la fachada de investigación energética, Brenner realizó experimentos con sujetos humanos — incluyendo niños con habilidades psíquicas. El sujeto más notable: <strong>Eleven (011)</strong>, una niña con poderes telequinéticos capaz de acceder a otras dimensiones.</p>
+          <p>En <strong>noviembre de 1983</strong>, un experimento salió mal. Eleven hizo contacto con una criatura de otra dimensión, lo que resultó en la apertura de un portal entre nuestro mundo y una realidad paralela conocida como <em>The Upside Down</em>.</p>
+        </section>
+
+        <section class="hawkins-section">
+          <h2>The Upside Down (El Mundo del Revés)</h2>
+          <p>El Mundo del Revés es una dimensión alternativa que existe como un reflejo oscuro y decadente de nuestro mundo. Se caracteriza por:</p>
+          <ul class="hawkins-list">
+            <li>Oscuridad perpetua y atmósfera tóxica con esporas flotantes</li>
+            <li>Vegetación orgánica que crece sobre todas las superficies (las "enredaderas")</li>
+            <li>Temperaturas extremadamente frías</li>
+            <li>Criaturas hostiles: Demogorgon, Demodogs, Mind Flayer, Vecna</li>
+            <li>Una conexión psíquica que permite a ciertas personas percibir ambos mundos</li>
+          </ul>
+          <p>El Upside Down replica la estructura física de Hawkins pero está completamente vacío de vida humana. Es un mundo donde el tiempo parece haberse detenido y la muerte impregna cada rincón.</p>
+        </section>
+
+        <section class="hawkins-section">
+          <h2>Eventos Clave</h2>
+          <div class="hawkins-timeline">
+            <div class="hawkins-event">
+              <div class="hawkins-event-year">1959</div>
+              <div class="hawkins-event-text">
+                <h4>Programa MKUltra</h4>
+                <p>El Dr. Brenner comienza experimentos secretos. Los primeros sujetos con habilidades psíquicas son identificados.</p>
+              </div>
+            </div>
+            <div class="hawkins-event">
+              <div class="hawkins-event-year">1971</div>
+              <div class="hawkins-event-text">
+                <h4>Nace "001" — Henry Creel</h4>
+                <p>Henry Creel, el primer sujeto exitoso, demuestra poderes devastadores. Es contenido y usado como "ordenanza" en el laboratorio.</p>
+              </div>
+            </div>
+            <div class="hawkins-event">
+              <div class="hawkins-event-year">1979</div>
+              <div class="hawkins-event-text">
+                <h4>La Masacre del Laboratorio</h4>
+                <p>Henry Creel (001) masacra a todos los niños del laboratorio. Eleven lo enfrenta y lo envía a otra dimensión, donde se transforma en Vecna.</p>
+              </div>
+            </div>
+            <div class="hawkins-event">
+              <div class="hawkins-event-year">1983</div>
+              <div class="hawkins-event-text">
+                <h4>La Desaparición de Will Byers</h4>
+                <p>Se abre el portal. Will Byers desaparece en el Upside Down. Mike, Dustin y Lucas conocen a Eleven. El Demogorgon aterroriza Hawkins.</p>
+              </div>
+            </div>
+            <div class="hawkins-event">
+              <div class="hawkins-event-year">1984</div>
+              <div class="hawkins-event-text">
+                <h4>El Mind Flayer</h4>
+                <p>Will es poseído por el Mind Flayer. El portal se reabre. El gobierno cierra el laboratorio oficialmente. Bob Newby muere como héroe.</p>
+              </div>
+            </div>
+            <div class="hawkins-event">
+              <div class="hawkins-event-year">1985</div>
+              <div class="hawkins-event-text">
+                <h4>La Batalla de Starcourt</h4>
+                <p>Los soviéticos intentan abrir su propio portal debajo del Starcourt Mall. El Mind Flayer regresa en forma física. Hopper "muere". Billy Hargrove se sacrifica.</p>
+              </div>
+            </div>
+            <div class="hawkins-event">
+              <div class="hawkins-event-year">1986</div>
+              <div class="hawkins-event-text">
+                <h4>La Guerra contra Vecna</h4>
+                <p>Vecna despierta y asesina adolescentes para abrir cuatro portales. Hawkins se parte. Max queda en coma. Hopper regresa de una prisión rusa. Vecna es derrotado... pero no destruido.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="hawkins-section">
+          <h2>Lugares Emblemáticos</h2>
+          <div class="hawkins-places">
+            <div class="hawkins-place">
+              <div class="hawkins-place-icon">🏠</div>
+              <h4>Casa de los Byers</h4>
+              <p>El epicentro de todo. Donde Joyce usó las luces navideñas para comunicarse con Will desde el Upside Down.</p>
+            </div>
+            <div class="hawkins-place">
+              <div class="hawkins-place-icon">🏫</div>
+              <h4>Escuela Secundaria de Hawkins</h4>
+              <p>Donde la vida normal se cruzó con lo sobrenatural una y otra vez.</p>
+            </div>
+            <div class="hawkins-place">
+              <div class="hawkins-place-icon">🛒</div>
+              <h4>Starcourt Mall</h4>
+              <p>Centro comercial construido sobre una base secreta soviética. Destruido en julio de 1985.</p>
+            </div>
+            <div class="hawkins-place">
+              <div class="hawkins-place-icon">🔬</div>
+              <h4>Laboratorio Nacional</h4>
+              <p>Sede del programa MKUltra y origen de todos los eventos sobrenaturales de Hawkins.</p>
+            </div>
+            <div class="hawkins-place">
+              <div class="hawkins-place-icon">🏚️</div>
+              <h4>Casa Creel</h4>
+              <p>La mansión maldita donde Victor Creel perdió a su familia. El hogar original de Henry Creel / Vecna.</p>
+            </div>
+            <div class="hawkins-place">
+              <div class="hawkins-place-icon">🌲</div>
+              <h4>El Bosque de Mirkwood</h4>
+              <p>El camino boscoso donde Will Byers desapareció por primera vez, nombrado así por los chicos como referencia a El Señor de los Anillos.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="hawkins-section">
+          <h2>Estado Actual</h2>
+          <div class="hawkins-highlight hawkins-highlight-red">
+            <p>Después de los eventos de 1986, Hawkins quedó devastada. Un "terremoto" (historia oficial del gobierno) partió la ciudad. Miles evacuaron. Las grietas que cruzan Hawkins son en realidad portales al Upside Down que permanecen abiertos.</p>
+            <p>La ciudad sigue habitada, pero ya nada es igual. Las esporas flotan en el aire. Las luces parpadean sin razón. Y algunos residentes juran que, por las noches, pueden escuchar algo <em>respirando</em> debajo de la tierra.</p>
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

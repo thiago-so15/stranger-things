@@ -116,32 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScroll = currentScroll;
   });
 
-  // --- Help Modal ---
-  const helpBtn = document.getElementById('helpBtn');
-  const helpModal = document.getElementById('helpModal');
-  const helpClose = document.getElementById('helpClose');
-
-  helpBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    helpModal.classList.add('active');
-  });
-
-  helpClose.addEventListener('click', () => {
-    helpModal.classList.remove('active');
-  });
-
-  helpModal.addEventListener('click', (e) => {
-    if (e.target === helpModal) {
-      helpModal.classList.remove('active');
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      helpModal.classList.remove('active');
-    }
-  });
-
   // --- Mobile Menu Toggle ---
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');

@@ -1,0 +1,366 @@
+/* ==========================================
+   EPISODES - VISUAL NOVEL ENGINE
+   Characters appear, talk, animate
+   ========================================== */
+
+/* --- Nav --- */
+.ep-nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
+.ep-nav-title { font-family: var(--font-title); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gray-text); }
+.btn-back-link { color: var(--gray-text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+.btn-back-link:hover { color: var(--red-primary); }
+
+/* --- Episode Browser --- */
+.ep-browser { padding: 8rem 2rem 4rem; max-width: 1200px; margin: 0 auto; }
+.ep-browser-header { margin-bottom: 3rem; }
+.ep-browser-header h1 { font-family: var(--font-title); font-size: 2.5rem; color: var(--white); margin-bottom: 0.5rem; }
+.ep-browser-header p { font-size: 0.9rem; color: var(--gray-text); letter-spacing: 1px; }
+.ep-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+
+.ep-card { background: var(--black-card); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+.ep-card:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(229,9,20,0.4); box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px rgba(229,9,20,0.15); }
+.ep-thumbnail { position: relative; height: 160px; background: linear-gradient(135deg, hsl(var(--hue),var(--sat),8%) 0%, hsl(var(--hue),var(--sat),18%) 40%, hsl(var(--hue),var(--sat),6%) 100%); overflow: hidden; }
+.ep-thumbnail::after { content:''; position: absolute; bottom:0; left:0; width:100%; height:50%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); }
+.ep-thumb-number { position: absolute; top:50%; left:50%; transform: translate(-50%,-50%); font-family: var(--font-title); font-size: 4rem; font-weight:700; color: var(--white); opacity: 0.08; z-index:1; }
+.ep-thumb-overlay { position: absolute; top:0; left:0; width:100%; height:100%; display: flex; align-items: center; justify-content: center; z-index:2; opacity:0; transition: var(--transition); }
+.ep-card:hover .ep-thumb-overlay { opacity: 1; }
+.ep-play-icon { width:50px; height:50px; border-radius:50%; background: rgba(229,9,20,0.9); display:flex; align-items:center; justify-content:center; color:var(--white); box-shadow: var(--glow-md); padding-left:4px; }
+.ep-play-icon svg { width:20px; height:20px; }
+.ep-card-info { padding: 1.2rem 1.5rem 1.5rem; }
+.ep-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+.ep-card-info h3 { font-family: var(--font-title); font-size: 1.1rem; color: var(--white); }
+.ep-duration { font-size: 0.75rem; color: var(--gray-text); }
+.ep-card-info p { font-size: 0.85rem; color: var(--gray-text); line-height: 1.6; }
+
+/* ==========================================
+   VISUAL NOVEL PLAYER
+   ========================================== */
+.vn-overlay {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: #000; z-index: 100000;
+  display: none; opacity: 0; transition: opacity 0.6s;
+}
+.vn-overlay.active { display: block; }
+.vn-overlay.visible { opacity: 1; }
+
+.vn-stage {
+  width: 100%; height: 100%;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* --- Background Layer --- */
+.vn-bg {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  transition: all 1.5s ease;
+  z-index: 1;
+}
+
+.vn-bg-overlay {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+}
+
+.vn-grain {
+  position: absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  animation: grain 0.5s steps(5) infinite;
+  z-index: 3; pointer-events: none;
+}
+@keyframes grain { 0%{transform:translate(0)} 25%{transform:translate(-2%,1%)} 50%{transform:translate(1%,-2%)} 75%{transform:translate(-1%,2%)} }
+
+/* Mood Backgrounds */
+.bg-dark { background: radial-gradient(ellipse at 50% 60%, #1a0505, #0a0000 40%, #000 70%); }
+.bg-hawkins { background: radial-gradient(ellipse at 30% 40%, #0d1117, #0a0a12 40%, #050508 80%); }
+.bg-void { background: radial-gradient(ellipse at 50% 50%, #ddd, #aaa 40%, #777 80%); }
+.bg-white { background: radial-gradient(ellipse at 50% 50%, #fff, #eee 30%, #ccc 60%, #999 100%); }
+.bg-eclipse { background: radial-gradient(ellipse at 50% 50%, #1a0a0a, #0a0505 30%, #000 60%); }
+.bg-horror { background: radial-gradient(ellipse at 50% 70%, #200000, #100000 30%, #000 60%); }
+.bg-cold { background: radial-gradient(ellipse at 40% 50%, #080d1a, #040810 40%, #000208 80%); }
+.bg-emotional { background: radial-gradient(ellipse at 50% 60%, #1a1008, #0f0a04 40%, #050302 80%); }
+.bg-hope { background: radial-gradient(ellipse at 60% 40%, #1a1510, #0f0c08 40%, #080604 80%); }
+.bg-lab { background: radial-gradient(ellipse at 50% 50%, #0f1a0f, #080e08 40%, #000 70%); }
+
+/* --- Character Layer --- */
+.vn-characters {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.vn-char {
+  position: absolute;
+  width: 42%;
+  max-width: 480px;
+  height: auto;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.5) saturate(0.5);
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.vn-char.active {
+  opacity: 1 !important;
+  filter: brightness(0.85) saturate(0.9);
+}
+
+.vn-char.speaking {
+  filter: brightness(1.15) saturate(1.1) drop-shadow(0 0 25px rgba(229, 9, 20, 0.35)) !important;
+  z-index: 5;
+}
+
+.vn-char.dim {
+  opacity: 0.35 !important;
+  filter: brightness(0.3) saturate(0.2);
+}
+
+.vn-char.pos-left {
+  left: 1%;
+  top: 15%;
+}
+
+.vn-char.pos-center {
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  width: 48%;
+  max-width: 520px;
+}
+
+.vn-char.pos-center.speaking {
+  transform: translateX(-50%) scale(1.03);
+}
+
+.vn-char.pos-right {
+  right: 1%;
+  top: 15%;
+}
+
+/* --- Dialogue Box --- */
+.vn-dialogue-box {
+  position: absolute;
+  bottom: 0; left: 0; width: 100%;
+  z-index: 20;
+  padding: 0 3rem 2rem;
+  pointer-events: none;
+}
+
+.vn-dialogue {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vn-dialogue.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vn-speaker {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--red-primary);
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+}
+
+.vn-text {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.8;
+}
+
+.vn-text em { color: var(--red-light); font-style: italic; }
+.vn-text strong { color: #fff; font-weight: 600; }
+
+.vn-indicator {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 1.5rem;
+  width: 12px; height: 12px;
+  border: 2px solid var(--red-primary);
+  border-top: none; border-left: none;
+  transform: rotate(45deg);
+  animation: vnBounce 1s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.vn-indicator.visible { opacity: 0.6; }
+
+@keyframes vnBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(4px); }
+}
+
+/* --- Narration Box (no speaker, centered) --- */
+.vn-dialogue.narration .vn-text {
+  text-align: center;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Scene Heading Overlay --- */
+.vn-scene-title {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 25;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.vn-scene-title.visible { opacity: 1; }
+
+.vn-scene-title h2 {
+  font-family: var(--font-title);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  color: var(--white);
+  text-shadow: 0 0 40px rgba(229, 9, 20, 0.5), 0 0 80px rgba(229, 9, 20, 0.2);
+  text-align: center;
+  padding: 0 2rem;
+}
+
+/* --- Transition --- */
+.vn-transition {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: #000;
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+.vn-transition.active { opacity: 1; }
+
+/* --- Top Bar --- */
+.vn-topbar {
+  position: absolute; top:0; left:0; width:100%;
+  padding: 1.2rem 2rem;
+  display: flex; align-items: center; gap: 1.5rem;
+  z-index: 40;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.vn-stage:hover .vn-topbar,
+.vn-stage.show-ui .vn-topbar { opacity: 1; }
+
+.vn-back { background:none; border:none; color:var(--white); cursor:pointer; padding:8px; border-radius:50%; transition: var(--transition); display:flex; }
+.vn-back:hover { background: rgba(255,255,255,0.1); }
+.vn-back svg { width:24px; height:24px; }
+.vn-ep-info { display: flex; flex-direction: column; }
+.vn-ep-show { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gray-text); }
+.vn-ep-title { font-family: var(--font-title); font-size: 0.9rem; color: var(--white); }
+
+/* --- Bottom Controls --- */
+.vn-controls {
+  position: absolute; bottom:0; left:0; width:100%;
+  z-index: 40;
+  padding: 0 2rem 0.8rem;
+  opacity: 0; transition: opacity 0.4s;
+}
+.vn-stage:hover .vn-controls,
+.vn-stage.show-ui .vn-controls { opacity: 1; }
+
+.vn-progress-wrap {
+  width: 100%; height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px; cursor: pointer;
+  margin-bottom: 0.6rem;
+}
+.vn-progress-wrap:hover { height: 5px; }
+.vn-progress { height:100%; background: var(--red-primary); border-radius:2px; width:0%; transition: width 0.3s; box-shadow: 0 0 6px rgba(229,9,20,0.5); }
+
+.vn-ctrl-row { display: flex; align-items: center; justify-content: space-between; }
+.vn-ctrl-row > div { display: flex; align-items: center; gap: 0.5rem; }
+
+.vn-btn { background:none; border:none; color:var(--white); cursor:pointer; padding:6px; border-radius:50%; transition:var(--transition); display:flex; align-items:center; justify-content:center; }
+.vn-btn:hover { background: rgba(255,255,255,0.1); }
+.vn-btn svg { width:20px; height:20px; }
+.vn-btn-text { font-size: 0.8rem; font-weight:600; padding: 4px 10px; border-radius:4px; }
+.vn-time { font-size: 0.7rem; color: var(--white-dim); letter-spacing:1px; font-variant-numeric: tabular-nums; }
+
+/* --- Intro --- */
+.vn-intro {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 50; background: #000;
+  opacity:1; transition: opacity 1.2s;
+}
+.vn-intro.hidden { opacity:0; pointer-events:none; }
+.vn-intro-logo { font-family:var(--font-title); font-size:3.5rem; font-weight:700; color:var(--red-primary); text-shadow:var(--glow-lg); animation: iFade 1.2s ease forwards; opacity:0; }
+.vn-intro-season { font-size:0.7rem; text-transform:uppercase; letter-spacing:5px; color:var(--gray-text); margin-top:0.8rem; animation: iFade 1.2s ease 0.4s forwards; opacity:0; }
+.vn-intro-ep { font-family:var(--font-title); font-size:1.1rem; color:var(--white-dim); margin-top:1.5rem; letter-spacing:3px; animation: iFade 1.2s ease 0.8s forwards; opacity:0; }
+.vn-intro-name { font-family:var(--font-accent); font-size:2.2rem; color:var(--white); margin-top:0.3rem; text-shadow: 0 0 30px rgba(229,9,20,0.3); animation: iFade 1.2s ease 1.2s forwards; opacity:0; }
+.vn-intro-hint { font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--gray-text); margin-top:2.5rem; animation: iFade 1.2s ease 2s forwards, vnPulse 2s ease-in-out 3s infinite; opacity:0; }
+@keyframes iFade { to { opacity:1; transform:translateY(0); } from { opacity:0; transform:translateY(12px); } }
+@keyframes vnPulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+/* --- End Screen --- */
+.vn-end {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.95); z-index: 45;
+  display: none; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+}
+.vn-end.active { display: flex; }
+.vn-end p { font-family: var(--font-title); font-size:0.9rem; text-transform:uppercase; letter-spacing:4px; color:var(--gray-text); }
+.vn-end button { padding:0.8rem 2rem; background:var(--red-primary); color:var(--white); border:none; border-radius:8px; font-family:var(--font-body); font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; cursor:pointer; transition:var(--transition); box-shadow:var(--glow-sm); }
+.vn-end button:hover { background:var(--red-glow); box-shadow:var(--glow-md); transform:translateY(-2px); }
+
+/* --- Glitch/Static FX --- */
+.vn-glitch {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  z-index:15; pointer-events:none; opacity:0;
+}
+.vn-glitch.flash {
+  animation: gFlash 0.3s steps(3) forwards;
+}
+@keyframes gFlash {
+  0%{opacity:0} 20%{opacity:1;background:rgba(229,9,20,0.04);transform:translateX(-3px)} 40%{opacity:0;transform:translateX(3px)} 60%{opacity:1;background:rgba(0,0,200,0.02);transform:skewX(1deg)} 80%{opacity:0} 100%{opacity:0}
+}
+
+.vn-static {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  z-index:15; pointer-events:none; opacity:0;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 2px);
+  transition: opacity 0.3s;
+}
+.vn-static.on { opacity:1; animation: sFlick 0.1s steps(2) infinite; }
+@keyframes sFlick { 50%{transform:translateY(1px)} }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .ep-browser { padding: 6rem 1.2rem 3rem; }
+  .ep-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .ep-nav-center { display: none; }
+  .vn-dialogue-box { padding: 0 1rem 1.5rem; }
+  .vn-dialogue { padding: 1.2rem 1.5rem; min-height: 100px; }
+  .vn-text { font-size: 0.95rem; }
+  .vn-char { width: 40%; max-width: 300px; }
+  .vn-topbar { padding: 0.8rem 1rem; }
+  .vn-controls { padding: 0 1rem 0.5rem; }
+}
